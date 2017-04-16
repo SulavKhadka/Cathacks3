@@ -27,6 +27,20 @@ var title = (document.title);
         http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
             alert(http.responseText.content);
+		var http = new XMLHttpRequest();
+        var url = "https://www.wolframcloud.com/objects/2e706e7a-7ee7-488b-9033-b4711b2adba4";
+        var params = "inputContent=" + http.responseText.content;
+        http.open("POST", url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            alert(http.responseText);
+            }
+        }
+        http.send(params);
             }
         }
         http.send();
