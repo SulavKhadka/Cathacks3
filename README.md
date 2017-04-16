@@ -5,11 +5,11 @@
 ### API
 ----------------------------------------------------------------
 Article Content Check:
-Endpoint: https://www.wolframcloud.com/objects/2e706e7a-7ee7-488b-9033-b4711b2adba4
+Endpoint: https://www.wolframcloud.com/objects/87b4b91d-a518-4b01-8296-ee8c2185c9cc
 Method: POST
 Parameters: inputContent (required)
 
 Article Title Check:
-Endpoint: https://www.wolframcloud.com/objects/81a1a576-b92d-4803-9b7d-59bea8af9735
+Endpoint: https://www.wolframcloud.com/objects/f9589d66-6e2a-4d26-a2ab-4ba006998f33
 Method: POST
 Parameters: inputTitle (required)
