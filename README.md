@@ -1,4 +1,4 @@
-# CatHacks3
+# Verifiable - fake news no more
 
 ## Finna do some stuff with Alexa and Wolfram Alpha, ya feel?
 
