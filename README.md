@@ -10,6 +10,6 @@ Method: POST
 Parameters: inputContent (required)
 
 Article Title Check:
-Endpoint: https://www.wolframcloud.com/objects/722e96a5-888c-4b9b-af23-44059a7f9315
+Endpoint: https://www.wolframcloud.com/objects/f28c7dba-6a42-4d63-ad08-8a34842def14
 Method: POST
 Parameters: inputTitle (required)
