@@ -5,7 +5,7 @@
 ### API
 ----------------------------------------------------------------
 Article Content Check:
-Endpoint: https://www.wolframcloud.com/objects/7ae2560d-1773-440c-a00e-d9a04d3ced01
+Endpoint: https://www.wolframcloud.com/objects/2e706e7a-7ee7-488b-9033-b4711b2adba4
 Method: POST
 Parameters: inputContent (required)
 
