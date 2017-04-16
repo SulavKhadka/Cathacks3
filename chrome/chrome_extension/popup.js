@@ -1,11 +1,12 @@
-var title = (document.title);
+var tab;
 
-var fake1 = 0, fake2 = 0, real1 = 0, real2 = 0, totalFake = 0, totalReal = 0;
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    tab = tabs[0];
+    var fake1 = 0, fake2 = 0, real1 = 0, real2 = 0, totalFake = 0, totalReal = 0;
 
-chrome.runtime.sendMessage(title);
 var http1 = new XMLHttpRequest();
 var url1 = "https://www.wolframcloud.com/objects/81a1a576-b92d-4803-9b7d-59bea8af9735";
-var params1 = "inputTitle=" + title;
+var params1 = "inputTitle=" + tab.title;
 http1.open("POST", url1, true);
 
 //Send the proper header information along with the request
@@ -23,7 +24,7 @@ http1.send(params1);
 
 var http2 = new XMLHttpRequest();
 var params2 = "";
-var url2 = "https://mercury.postlight.com/parser?url=" + window.location.href;
+var url2 = "https://mercury.postlight.com/parser?url=" + tab.url;
 http2.open("GET", url2, true);
 
 //Send the proper header information along with the request
@@ -38,8 +39,8 @@ http2.onreadystatechange = function () {//Call a function when the state changes
             console.log(rt);
             console.log(rt.content);
             var http3 = new XMLHttpRequest();
-            var url3 = "https://www.wolframcloud.com/objects/2e706e7a-7ee7-488b-9033-b4711b2adba4";
-            var params3 = "inputContent=" + rt.content;
+            var url3 = "https://www.wolframcloud.com/objects/8f0d52ad-50ea-4dd0-bba8-0f38586e8c13";
+            var params3 = "inputContent=" + tab.url;
             http3.open("POST", url3, true);
 
             //Send the proper header information along with the request
@@ -51,10 +52,18 @@ http2.onreadystatechange = function () {//Call a function when the state changes
                    var parsed = JSON.parse(http3.responseText);
                     if(parsed.Fake) fake2 = parsed.Fake * 100;
                     if(parsed.Real) real2 = parsed.Real * 100;
-                    alert(fake2);
+                    //alert(fake2);
                     totalFake = (fake2 * 0.8) + (fake1 * 0.2);
                     totalReal = (real2 * 0.8) + (real1 * 0.2);
-                    alert("Total Fake " + totalFake + " Total Real: " + totalReal);
+                    //alert("Total Fake " + totalFake + " Total Real: " + totalReal);
+                    if(totalFake > totalReal) {
+                        document.body.style.backgroundColor = "#D32F2F";
+                        document.getElementById("title").innerHTML = "FAKE";
+                    } else {
+                        document.body.style.backgroundColor = "#388E3C";
+                        document.getElementById("title").innerHTML = "REAL";
+                    }
+                    document.getElementById("out-there").innerHTML = totalReal + "%";
                 }
             }
             http3.send(params3);
@@ -65,4 +74,7 @@ http2.send(params2);
 
 
 
-//s
+//s`
+
+});
+
